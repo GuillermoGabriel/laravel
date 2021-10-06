@@ -57,13 +57,18 @@ class PaisesController extends Controller
    
     public function edit($id)
     {
-        //
+        //return 'id del registro es '. $id;
+        $nacionalidad=pais::findOrFail($id);
+        //return $nacionalidad;
+        return view('paises.editar',compact('nacionalidad'));
+
+
     }
 
     
     public function update(Request $request, $id)
     {
-        //
+        return $request;
     }
 
     

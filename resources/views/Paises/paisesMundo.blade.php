@@ -6,17 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     @include('layout.script_cabezera')
-    <!--@extends('css.stilos_guillermo')
-    <style>
-        @import 'css.stilos_guillermo';
-    </style>-->
-
-        <style type="text/css">
-                .Index{
-                    font-family: 'Times New Roman', Times, serif;
-                  
-                }
-        </style>
     
 </head>
         
@@ -69,7 +58,8 @@
 
 
                     <td>
-                        <a class="btn btn-sm btn-info" href=""><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-sm btn-info" href="{{route('paises.edit',$registro->ID)}}"><i class="fas fa-edit"></i></a>
+
                         <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
