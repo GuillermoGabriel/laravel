@@ -58,9 +58,9 @@
 
 
                     <td>
-                        <a class="btn btn-sm btn-info" href="{{route('paises.edit',$registro->ID)}}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-sm btn-info" href="{{route('paises.edit',$registro->id)}}"><i class="fas fa-edit"></i></a>
 
-                        <a class="btn btn-sm btn-danger" href=""><i class="fas fa-trash"></i></a>
+                        <a class="btn btn-sm btn-danger" href="{{route('paises.show',$registro->id)}}"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
             @endforeach           

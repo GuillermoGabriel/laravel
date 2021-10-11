@@ -29,6 +29,12 @@ class PaisesController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'txt_nombres'=>'required',
+            'txt_poblacion'=>'required',
+            'txt_continente'=>'required'
+            
+        ]);
         //return $request;
         $registrar=new pais;        
         $registrar->Nombres=$request->txt_nombres;
@@ -49,8 +55,8 @@ class PaisesController extends Controller
 
     public function show($id)
     {
-
-        //
+        $nacionalidad=pais::findOrFail($id);
+        return view('paises.eliminar',compact('nacionalidad'));
         
     }
 
@@ -61,19 +67,42 @@ class PaisesController extends Controller
         $nacionalidad=pais::findOrFail($id);
         //return $nacionalidad;
         return view('paises.editar',compact('nacionalidad'));
-
-
-    }
-
-    
+    } 
     public function update(Request $request, $id)
     {
-        return $request;
+        //return 'estoy en el metodo update';
+        $pais=pais::findOrFail($id);
+        $pais->Nombres=$request->txt_nombres;   
+        $pais->Poblacion=$request->txt_poblacion;
+        $pais->Continente=$request->txt_continente;
+        //Aqui guardo en la bd
+
+        if ($pais->save()) {
+            Session::flash('exito','Editado correctamente');
+            return Redirect::to('paises');
+        }
+        else{
+            Session::flash('error','Ocurrio un error al editar, verifique!');
+            return Redirect::to('paises/'.$id.'/edit');
+        }      
+
+       
     }
 
     
     public function destroy($id)
     {
-        //
+        try{
+            pais::destroy($id);
+            Session::flash('exito','Eliminado correctamente');
+            return Redirect::to('paises');
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+            Session::flash('error',$e);
+            return Redirect::to('paises');
+            
+
+        }
     }
 }

@@ -32,21 +32,38 @@
             
 
             <div class="form-group">
-               <label for="exampleInputEmail1">Nombres</label>
-                <input type="dni" class="form-control" id="txt_nombres" name="txt_nombres" required>
+               <label for="exampleInputEmail1">Nombres(*)</label>
+                <input type="dni" class="form-control" id="txt_nombres" name="txt_nombres" value="{{old('txt_nombres')}}">
+                    @error('txt_nombres')
+                    <span class="error" role="alert" style="color:red">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
             </div>
 
             <div class="form-group">
-               <label for="exampleInputEmail1">Poblacion </label>
-                <input type="text" class="form-control" id="txt_poblacion" name="txt_poblacion">
+               <label for="exampleInputEmail1">Poblacion(*) </label>
+                <input type="text" class="form-control" id="txt_poblacion" name="txt_poblacion" value="{{old('txt_poblacion')}}">
+                    @error('txt_poblacion')
+                    <span class="error" role="alert" style="color:red">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror               
             </div>
 
             <div class="form-group">
-               <label for="exampleInputEmail1">Continente</label>
-                <input type="text" class="form-control" id="txt_continente" name="txt_continente">
+               <label for="exampleInputEmail1">Continente(*)</label>
+                <input type="text" class="form-control" id="txt_continente" name="txt_continente" value="{{old('txt_continente')}}">
+                    @error('txt_continente')
+                    <span class="error" role="alert" style="color:red">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
             </div>
-
-            
+                <hr>
+                <div class="form-group">
+                    (*)Campos Obligatorios
+                </div>
 
 
                 <button type="submit" class="btn btn-primary">Registrar</button>

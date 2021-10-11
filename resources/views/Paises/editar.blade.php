@@ -25,11 +25,9 @@
                @endif
         </div>
 
-        <form action="{{route('paises.update',$nacionalidad->ID)}}" method="POST">
+        <form action="{{route('paises.update',$nacionalidad->id)}}" method="POST">
         @method('PATCH')
             @csrf
-
-            
 
             <div class="form-group">
                <label for="exampleInputEmail1">Nombres</label>
